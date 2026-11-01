@@ -7302,9 +7302,6 @@
   "/resonac/products": [
     "valuex"
   ],
-  "/reuters/investigates": [
-    "LyleLee"
-  ],
   "/reuters/my-news": [
     "dzx-dzx"
   ],
@@ -7315,6 +7312,9 @@
     "black-desk",
     "nczitzk",
     "pseudoyu"
+  ],
+  "/reuters/investigates": [
+    "LyleLee"
   ],
   "/rfa/:language?/:channel?/:subChannel?": [
     "zphw"
