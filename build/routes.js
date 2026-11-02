@@ -976,44 +976,6 @@ export default {
     "url": "freebuf.com",
     "lang": "zh-CN"
   },
-  "fuliba": {
-    "routes": {
-      "/latest": {
-        "path": "/latest",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/fuliba/latest",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "fuliba2023.net/"
-            ]
-          }
-        ],
-        "name": "最新",
-        "maintainers": [
-          "shinemoon"
-        ],
-        "url": "fuliba2023.net/",
-        "location": "latest.ts",
-        "module": () => import('@/routes/fuliba/latest.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "福利吧",
-    "url": "fuliba2023.net",
-    "lang": "zh-CN"
-  },
   "7gogo": {
     "routes": {
       "/user/:username": {
@@ -22775,7 +22737,7 @@ export default {
         "categories": [
           "game"
         ],
-        "example": "/mihoyo/bbs/official/2/3/20/",
+        "example": "/mihoyo/bbs/official/2/3/20",
         "parameters": {
           "gids": "游戏id",
           "type": "公告类型，默认为 2(即 活动)",
@@ -48008,7 +47970,7 @@ export default {
         "categories": [
           "anime"
         ],
-        "example": "/collabo-cafe/",
+        "example": "/collabo-cafe",
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -60562,6 +60524,44 @@ export default {
     ],
     "lang": "zh-CN"
   },
+  "fuliba": {
+    "routes": {
+      "/latest": {
+        "path": "/latest",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/fuliba/latest",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "fuliba2023.net/"
+            ]
+          }
+        ],
+        "name": "最新",
+        "maintainers": [
+          "shinemoon"
+        ],
+        "url": "fuliba2023.net/",
+        "location": "latest.ts",
+        "module": () => import('@/routes/fuliba/latest.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "福利吧",
+    "url": "fuliba2023.net",
+    "lang": "zh-CN"
+  },
   "funresearch": {
     "routes": {
       "/grants": {
@@ -62521,6 +62521,187 @@ export default {
         "location": "notifications.ts",
         "module": () => import('@/routes/github/notifications.ts')
       },
+      "/pull/:user/:repo/:state?/:labels?": {
+        "path": "/pull/:user/:repo/:state?/:labels?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/pull/DIYgod/RSSHub",
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name",
+          "state": {
+            "description": "the state of pull requests.",
+            "default": "open",
+            "options": [
+              {
+                "label": "Open",
+                "value": "open"
+              },
+              {
+                "label": "Closed",
+                "value": "closed"
+              },
+              {
+                "label": "All",
+                "value": "all"
+              }
+            ]
+          },
+          "labels": "a list of comma separated label names"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/pulls",
+              "github.com/:user/:repo/pulls/:id",
+              "github.com/:user/:repo"
+            ],
+            "target": "/pull/:user/:repo"
+          }
+        ],
+        "name": "Repo Pull Requests",
+        "maintainers": [
+          "hashman",
+          "TonyRL"
+        ],
+        "location": "pulls.ts",
+        "module": () => import('@/routes/github/pulls.ts')
+      },
+      "/repos/:user/:type?/:sort?": {
+        "path": "/repos/:user/:type?/:sort?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/repos/DIYgod",
+        "parameters": {
+          "user": "GitHub username",
+          "type": "Type of repository, can be `all`, `owner`, `member`, `public`, `private`, `forks`, `sources`",
+          "sort": "Sort by `created`, `updated`, `pushed`, `full_name`"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user"
+            ]
+          }
+        ],
+        "name": "User Repo",
+        "maintainers": [
+          "DIYgod"
+        ],
+        "location": "repos.ts",
+        "module": () => import('@/routes/github/repos.ts')
+      },
+      "/search/:query/:sort?/:order?": {
+        "path": "/search/:query/:sort?/:order?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/search/RSSHub/bestmatch/desc",
+        "parameters": {
+          "query": "search keyword",
+          "sort": "Sort options (default to bestmatch)",
+          "order": "Sort order, desc and asc (desc descending by default)"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Search Result",
+        "maintainers": [
+          "LogicJake"
+        ],
+        "description": "| Sort options     | sort      |\n| ---------------- | --------- |\n| Best match       | bestmatch |\n| Most stars       | stars     |\n| Most forks       | forks     |\n| Recently updated | updated   |",
+        "location": "search.ts",
+        "module": () => import('@/routes/github/search.ts')
+      },
+      "/stars/:user/:repo": {
+        "path": "/stars/:user/:repo",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/stars/DIYgod/RSSHub",
+        "view": 5,
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "GITHUB_ACCESS_TOKEN",
+              "description": "GitHub Access Token"
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/stargazers",
+              "github.com/:user/:repo"
+            ]
+          }
+        ],
+        "name": "Repo Stars",
+        "maintainers": [
+          "HenryQW"
+        ],
+        "location": "star.ts",
+        "module": () => import('@/routes/github/star.ts')
+      },
+      "/starred_repos/:user": {
+        "path": "/starred_repos/:user",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/starred_repos/DIYgod",
+        "parameters": {
+          "user": "User name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "GITHUB_ACCESS_TOKEN",
+              "optional": true,
+              "description": "To get more requests"
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user"
+            ]
+          }
+        ],
+        "name": "User Starred Repositories",
+        "maintainers": [
+          "LanceZhu"
+        ],
+        "location": "starred-repos.ts",
+        "module": () => import('@/routes/github/starred-repos.ts')
+      },
       "/org_event/:org/:types?": {
         "path": "/org_event/:org/:types?",
         "categories": [
@@ -62727,61 +62908,6 @@ export default {
         "location": "private-feed.ts",
         "module": () => import('@/routes/github/private-feed.ts')
       },
-      "/pull/:user/:repo/:state?/:labels?": {
-        "path": "/pull/:user/:repo/:state?/:labels?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/pull/DIYgod/RSSHub",
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name",
-          "state": {
-            "description": "the state of pull requests.",
-            "default": "open",
-            "options": [
-              {
-                "label": "Open",
-                "value": "open"
-              },
-              {
-                "label": "Closed",
-                "value": "closed"
-              },
-              {
-                "label": "All",
-                "value": "all"
-              }
-            ]
-          },
-          "labels": "a list of comma separated label names"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/pulls",
-              "github.com/:user/:repo/pulls/:id",
-              "github.com/:user/:repo"
-            ],
-            "target": "/pull/:user/:repo"
-          }
-        ],
-        "name": "Repo Pull Requests",
-        "maintainers": [
-          "hashman",
-          "TonyRL"
-        ],
-        "location": "pulls.ts",
-        "module": () => import('@/routes/github/pulls.ts')
-      },
       "/repo_event/:owner/:repo/:types?": {
         "path": "/repo_event/:owner/:repo/:types?",
         "categories": [
@@ -62895,132 +63021,6 @@ export default {
         ],
         "location": "repo-event.ts",
         "module": () => import('@/routes/github/repo-event.ts')
-      },
-      "/repos/:user/:type?/:sort?": {
-        "path": "/repos/:user/:type?/:sort?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/repos/DIYgod",
-        "parameters": {
-          "user": "GitHub username",
-          "type": "Type of repository, can be `all`, `owner`, `member`, `public`, `private`, `forks`, `sources`",
-          "sort": "Sort by `created`, `updated`, `pushed`, `full_name`"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user"
-            ]
-          }
-        ],
-        "name": "User Repo",
-        "maintainers": [
-          "DIYgod"
-        ],
-        "location": "repos.ts",
-        "module": () => import('@/routes/github/repos.ts')
-      },
-      "/search/:query/:sort?/:order?": {
-        "path": "/search/:query/:sort?/:order?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/search/RSSHub/bestmatch/desc",
-        "parameters": {
-          "query": "search keyword",
-          "sort": "Sort options (default to bestmatch)",
-          "order": "Sort order, desc and asc (desc descending by default)"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Search Result",
-        "maintainers": [
-          "LogicJake"
-        ],
-        "description": "| Sort options     | sort      |\n| ---------------- | --------- |\n| Best match       | bestmatch |\n| Most stars       | stars     |\n| Most forks       | forks     |\n| Recently updated | updated   |",
-        "location": "search.ts",
-        "module": () => import('@/routes/github/search.ts')
-      },
-      "/stars/:user/:repo": {
-        "path": "/stars/:user/:repo",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/stars/DIYgod/RSSHub",
-        "view": 5,
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "GITHUB_ACCESS_TOKEN",
-              "description": "GitHub Access Token"
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/stargazers",
-              "github.com/:user/:repo"
-            ]
-          }
-        ],
-        "name": "Repo Stars",
-        "maintainers": [
-          "HenryQW"
-        ],
-        "location": "star.ts",
-        "module": () => import('@/routes/github/star.ts')
-      },
-      "/starred_repos/:user": {
-        "path": "/starred_repos/:user",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/starred_repos/DIYgod",
-        "parameters": {
-          "user": "User name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "GITHUB_ACCESS_TOKEN",
-              "optional": true,
-              "description": "To get more requests"
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user"
-            ]
-          }
-        ],
-        "name": "User Starred Repositories",
-        "maintainers": [
-          "LanceZhu"
-        ],
-        "location": "starred-repos.ts",
-        "module": () => import('@/routes/github/starred-repos.ts')
       },
       "/user_event/:username/:types?": {
         "path": "/user_event/:username/:types?",
@@ -104920,6 +104920,29 @@ export default {
   },
   "reuters": {
     "routes": {
+      "/investigates": {
+        "path": "/investigates",
+        "categories": [
+          "traditional-media"
+        ],
+        "view": 0,
+        "example": "/reuters/investigates",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Investigates",
+        "maintainers": [
+          "LyleLee"
+        ],
+        "location": "investigates.ts",
+        "module": () => import('@/routes/reuters/investigates.ts')
+      },
       "/my-news": {
         "path": "/my-news",
         "categories": [
@@ -105021,29 +105044,6 @@ export default {
         "description": "- `:category`:\n\n  | World | Business | Legal | Markets | Breakingviews | Technology | Graphics |\n  | ----- | -------- | ----- | ------- | ------------- | ---------- | -------- |\n  | world | business | legal | markets | breakingviews | technology | graphics |\n\n- `world/:topic`:\n\n  | All | Africa | Americas | Asia Pacific | China | Europe | India | Middle East | United Kingdom | United States | The Great Reboot | Reuters Next |\n  | --- | ------ | -------- | ------------ | ----- | ------ | ----- | ----------- | -------------- | ------------- | ---------------- | ------------ |\n  |     | africa | americas | asia-pacific | china | europe | india | middle-east | uk             | us            | the-great-reboot | reuters-next |\n\n- `business/:topic`:\n\n  | All | Aerospace & Defense | Autos & Transportation | Energy | Environment | Finance | Healthcare & Pharmaceuticals | Media & Telecom | Retail & Consumer | Sustainable Business | Charged | Future of Health | Future of Money | Take Five | Reuters Impact |\n  | --- | ------------------- | ---------------------- | ------ | ----------- | ------- | ---------------------------- | --------------- | ----------------- | -------------------- | ------- | ---------------- | --------------- | --------- | -------------- |\n  |     | aerospace-defense   | autos-transportation   | energy | environment | finance | healthcare-pharmaceuticals   | media-telecom   | retail-consumer   | sustainable-business | charged | future-of-health | future-of-money | take-five | reuters-impact |\n\n- `legal/:topic`:\n\n  | All | Government | Legal Industry | Litigation | Transactional |\n  | --- | ---------- | -------------- | ---------- | ------------- |\n  |     | government | legalindustry  | litigation | transactional |\n\n- `authors/:topic`:\n\n  | Default | Jonathan Landay | any other authors |\n  | ------- | --------------- | ----------------- |\n  | reuters | jonathan-landay | their name in URL |\n\nMore could be found in the URL of the category/topic page.",
         "location": "common.tsx",
         "module": () => import('@/routes/reuters/common.tsx')
-      },
-      "/investigates": {
-        "path": "/investigates",
-        "categories": [
-          "traditional-media"
-        ],
-        "view": 0,
-        "example": "/reuters/investigates",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Investigates",
-        "maintainers": [
-          "LyleLee"
-        ],
-        "location": "investigates.ts",
-        "module": () => import('@/routes/reuters/investigates.ts')
       }
     },
     "apiRoutes": {},
@@ -123200,7 +123200,7 @@ export default {
         "maintainers": [
           "henbf"
         ],
-        "description": "| 全部 | 学院新闻 | 学术活动 | 城市建设学院 | 信息工程学院 | 经济学院 | 管理学院 | 材料系 | 机械工程系 | 护理系 | 法律系 | 外语系 | 艺术系 |\n| ---- | -------- | -------- | ------------ | ------------ | -------- | -------- | ------ | ---------- | ------ | ------ | ------ | ------ |\n| all  | xyxw     | xshhd    | csjsxy       | xxgcxy       | jjx      | glxy     | clx    | jxgcx      | hlx    | flx    | wyx    | ysx    |",
+        "description": "| 全部 | 学院新闻 | 城市建设学院 | 材料科学与工程学院 | 智能制造学院 | 人工智能学院 | 低空技术与工程学院 | 经济学院 | 管理学院 |\n| ---- | -------- | ------------ | ------------------ | ------------ | ------------ | ------------------ | -------- | -------- |\n| all  | xyxw     | csjsxy       | clkxygcxy          | znzzxy       | rgznxy       | dkjsygcxy          | jjxy     | glxy     |\n\n| 大健康学院 | 外国语学院 | 艺术学院 | 法学院 | 劳动学院 | 马克思主义学院 | 明德通识学院 | 体育部 | 基础部 |\n| ---------- | ---------- | -------- | ------ | -------- | -------------- | ------------ | ------ | ------ |\n| djkxy      | wgyxy      | ysxy     | fxy    | ldxy     | mkszyxy        | mdtsxy       | tyb    | jcb    |",
         "location": "tj/news.ts",
         "module": () => import('@/routes/ustb/tj/news.ts')
       },
@@ -135691,8 +135691,8 @@ export default {
         "location": "rent-store.ts",
         "module": () => import('@/routes/athome/rent-store.ts')
       },
-      "/chintai/:pref/:city": {
-        "path": "/chintai/:pref/:city",
+      "/chintai/:pref/:city/:page?": {
+        "path": "/chintai/:pref/:city/:page?",
         "name": "賃貸物件",
         "url": "www.athome.co.jp",
         "maintainers": [
@@ -135705,6 +135705,10 @@ export default {
           },
           "city": {
             "description": "市区町村 slug as the site spells it — `minato-city`, `yokohama_naka-city`. Note the underscore in 政令指定都市 slugs."
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
           }
         },
         "description": "賃貸 rooms on アットホーム for one 市区町村，newest first (the page's own 新着順).\n\nEvery field comes from the list page's own SSR state, read in a browser like the 貸店舗 route (the page sits behind a self-clearing JavaScript interstitial, and a plain HTTP client is refused after a handful of requests). Each room is one item, with the building's 種目，name, 所在地，交通，階建 and 築年月 copied on and the room's 階，部屋番号 (where the site prints one), 賃料，管理費，敷金，礼金，間取り and 専有面積. The per-room pages are not visited: one browser navigation per room is what gets a client refused.\n\n`_extra` follows the shared residential shape. `address` is printed by the site from the 区 on, without the 都道府県. `raw.same_room_ids` is the site's own list of listings of the same room by other agents, useful for deduplication. `listed_at` stays `null`: the 情報公開日 is only on the room's own page.\n\n| Query   | Description                            | Default |\n| ------- | -------------------------------------- | ------- |\n| `limit` | Rooms to return, at most one list page | 20      |",
@@ -150961,7 +150965,7 @@ export default {
         "categories": [
           "government"
         ],
-        "example": "/gov/tianjin/tjrcgzw-notice/rczc/sjrczc/",
+        "example": "/gov/tianjin/tjrcgzw-notice/rczc/sjrczc",
         "parameters": {
           "cate": "栏目分类，可在源网站 URL 中找到，例如 rczc（人才政策）",
           "subCate": "子栏目分类，例如 sjrczc（市级人才政策）"
@@ -151977,8 +151981,8 @@ export default {
   },
   "homes": {
     "routes": {
-      "/chintai/:pref/:city": {
-        "path": "/chintai/:pref/:city",
+      "/chintai/:pref/:city/:page?": {
+        "path": "/chintai/:pref/:city/:page?",
         "name": "賃貸物件",
         "url": "www.homes.co.jp",
         "maintainers": [
@@ -151991,6 +151995,10 @@ export default {
           },
           "city": {
             "description": "市区町村 slug as LIFULL HOME'S spells it — `minato-city` for `/chintai/tokyo/minato-city/list/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
           }
         },
         "description": "賃貸 rooms on LIFULL HOME'S for one 市区町村，newest first (the page's own 新着順).\n\nEach room row of a building block is one item; the building's 種目，name, 所在地，交通 and 階数 are copied onto it, and the row adds 階，部屋番号 where the site prints one, 賃料，管理費等，敷金 / 礼金 / 保証金 / 敷引・償却，間取り，専有面積 and the 定期借家 badge. The sponsored rows at the top of the page are not read. Each room's own page is then read once (cached per listing) for 築年月，構造，総戸数，現況，入居可能時期，契約期間，更新料，保証会社 and the 情報公開日 / 情報更新日.\n\n`_extra` follows the shared residential shape. LIFULL HOME'S quotes 敷金 / 礼金 either in months or in yen, and each lands in its own field (`deposit_months` or `deposit_jpy`), never converted. `listed_at` is the 情報公開日.\n\nThe site sits behind AWS WAF, which starts answering a client with an empty challenge page after only a few requests: measured on 2026-10-31 at about fifteen in an hour and again at about eight in ten minutes, from one address, and lifted within the hour. The route reports that as an error naming the challenge rather than as an empty feed, and does not try to get past it. To stay under that, one poll requests at most five detail pages it has not cached yet, and stops requesting altogether once the site has challenged it; items past that keep their list fields until a later poll fills them in. A challenged list page fails the feed. Poll each area infrequently and not several areas at once, and pass `detail=0` to make one request per poll instead of one per item.\n\n| Query    | Description                                                    | Default |\n| -------- | -------------------------------------------------------------- | ------- |\n| `limit`  | Rooms to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-room pages and returns list-page fields only | `1`     |",
@@ -152014,8 +152022,8 @@ export default {
         "location": "chintai.ts",
         "module": () => import('@/routes/homes/chintai.ts')
       },
-      "/kodate/chuko/:pref/:city": {
-        "path": "/kodate/chuko/:pref/:city",
+      "/kodate/chuko/:pref/:city/:page?": {
+        "path": "/kodate/chuko/:pref/:city/:page?",
         "name": "中古一戸建て",
         "url": "www.homes.co.jp",
         "maintainers": [
@@ -152028,6 +152036,10 @@ export default {
           },
           "city": {
             "description": "市区町村 slug as LIFULL HOME'S spells it — `setagaya-city` for `/kodate/chuko/tokyo/setagaya-city/list/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
           }
         },
         "description": "中古一戸建て for sale on LIFULL HOME'S for one 市区町村，newest first (the page's own 新着順).\n\nEach house block of the list page is one item: 交通，所在地，建築年，現況 and 主要採光面 from the block, 価格，間取り，土地面積 and 建物面積 from its row, and a 価格更新 note when the price moved (`raw.price_updated`). Each house's own page is then read once (cached per listing) for 建物構造，接道状況，都市計画，用途地域，建ぺい率，容積率，土地権利，引渡し，取引態様 and the 情報公開日 / 最新情報提供日.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'`: `area_m2` is the 建物面積，`land_area_m2` the 土地面積 and `listed_at` the 情報公開日.\n\nThe site sits behind AWS WAF, which starts answering a client with an empty challenge page after only a few requests: measured on 2026-10-31 at about fifteen in an hour and again at about eight in ten minutes, from one address, and lifted within the hour. The route reports that as an error naming the challenge rather than as an empty feed, and does not try to get past it. To stay under that, one poll requests at most five detail pages it has not cached yet, and stops requesting altogether once the site has challenged it; items past that keep their list fields until a later poll fills them in. A challenged list page fails the feed. Poll each area infrequently and not several areas at once, and pass `detail=0` to make one request per poll instead of one per item.\n\n| Query    | Description                                                     | Default |\n| -------- | --------------------------------------------------------------- | ------- |\n| `limit`  | Houses to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-house pages and returns list-page fields only | `1`     |",
@@ -152051,8 +152063,8 @@ export default {
         "location": "kodate-chuko.ts",
         "module": () => import('@/routes/homes/kodate-chuko.ts')
       },
-      "/mansion/chuko/:pref/:city": {
-        "path": "/mansion/chuko/:pref/:city",
+      "/mansion/chuko/:pref/:city/:page?": {
+        "path": "/mansion/chuko/:pref/:city/:page?",
         "name": "中古マンション",
         "url": "www.homes.co.jp",
         "maintainers": [
@@ -152065,6 +152077,10 @@ export default {
           },
           "city": {
             "description": "市区町村 slug as LIFULL HOME'S spells it — `minato-city` for `/mansion/chuko/tokyo/minato-city/list/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
           }
         },
         "description": "中古マンション for sale on LIFULL HOME'S for one 市区町村，newest first (the page's own 新着順).\n\nEach unit row of a building block is one item: the block gives 交通，所在地，構造，階数，築年月 and 総戸数，the row 階，価格，間取り，専有面積，主要採光面 and a 価格更新 note when the price moved (`raw.price_updated`). Each unit's own page is then read once (cached per listing) for 管理費等，修繕積立金，用途地域，土地権利，管理，現況，引渡し，取引態様 and the 情報公開日 / 最新情報提供日.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'`; `listed_at` is the 情報公開日.\n\nThe site sits behind AWS WAF, which starts answering a client with an empty challenge page after only a few requests: measured on 2026-10-31 at about fifteen in an hour and again at about eight in ten minutes, from one address, and lifted within the hour. The route reports that as an error naming the challenge rather than as an empty feed, and does not try to get past it. To stay under that, one poll requests at most five detail pages it has not cached yet, and stops requesting altogether once the site has challenged it; items past that keep their list fields until a later poll fills them in. A challenged list page fails the feed. Poll each area infrequently and not several areas at once, and pass `detail=0` to make one request per poll instead of one per item.\n\n| Query    | Description                                                    | Default |\n| -------- | -------------------------------------------------------------- | ------- |\n| `limit`  | Units to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-unit pages and returns list-page fields only | `1`     |",
@@ -161721,7 +161737,7 @@ export default {
           "BeaCox"
         ],
         "url": "www.cs.sjtu.edu.cn/notice-xssw-bkspy.html",
-        "description": "| 本科生培养 | 研究生培养 | 国际交流 | 党建德育 | 团学工作 | 职业发展 | 其他 |\n| ---------- | ---------- | -------- | -------- | -------- | -------- | ---- |\n| bkspy      | yjspy      | gjjl     | djdy     | txgz     | zyfz     | qt   |",
+        "description": "仅包含官网未登录时可见的公开通知。分类没有公开通知时无法生成订阅。\n\n| 本科生培养 | 研究生培养 | 国际交流 | 党建德育 | 团学工作 | 职业发展 | 其他 |\n| ---------- | ---------- | -------- | -------- | -------- | -------- | ---- |\n| bkspy      | yjspy      | gjjl     | djdy     | txgz     | zyfz     | qt   |",
         "location": "cs/tzgg.tsx",
         "module": () => import('@/routes/sjtu/cs/tzgg.tsx')
       },
@@ -162440,8 +162456,8 @@ export default {
   },
   "suumo": {
     "routes": {
-      "/chintai/:pref/:city": {
-        "path": "/chintai/:pref/:city",
+      "/chintai/:pref/:city/:page?": {
+        "path": "/chintai/:pref/:city/:page?",
         "name": "賃貸物件",
         "url": "suumo.jp",
         "maintainers": [
@@ -162454,6 +162470,10 @@ export default {
           },
           "city": {
             "description": "市区町村 slug as SUUMO spells it after `sc_` in its area path — `minato` for `/chintai/tokyo/sc_minato/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
           }
         },
         "description": "賃貸 rooms on SUUMO for one 市区町村，newest first (the page's own 新着順).\n\nEach room row of the list page is one item; the building's 種目，name, 所在地，交通 and 階建 are copied onto it. Each room's own page is then read once for what the list does not show — 築年月，構造，契約期間，保証会社，損保，取引態様，情報更新日 — and cached per listing, while the list's own values (賃料 and the rest) are read fresh on every poll.\n\n`_extra` follows the shared residential shape: `price_jpy` is the monthly 賃料，`deposit_jpy` / `key_money_jpy` the 敷金 / 礼金 as SUUMO quotes them (in yen), and `listed_at` stays `null` because SUUMO publishes no 情報公開日 — `updated_at` carries its 情報更新日 instead.\n\n| Query    | Description                                                    | Default |\n| -------- | -------------------------------------------------------------- | ------- |\n| `limit`  | Rooms to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-room pages and returns list-page fields only | `1`     |",
@@ -166094,6 +166114,32 @@ export default {
   },
   "yahoo": {
     "routes": {
+      "/auctions/search/:query": {
+        "path": "/auctions/search/:query",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/yahoo/auctions/search/p=カメラ&aucmaxprice=10000",
+        "parameters": {
+          "query": "Search conditions, the query string of a search result URL on auctions.yahoo.co.jp, e.g. `p=カメラ&auccat=23632&aucmaxprice=10000`. Every condition the site supports works, including those set in 条件指定. Newest listings come first unless `s1` is set"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Yahoo! Auctions Search",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "url": "auctions.yahoo.co.jp",
+        "description": "Search conditions are passed to the site as is, so the easiest way to build a feed is to search on [Yahoo! Auctions](https://auctions.yahoo.co.jp), then copy everything after `?` in the result URL.\n\n::: warning\nYahoo! JAPAN services are not available from the EEA and the UK.\n:::",
+        "location": "auctions/search.tsx",
+        "module": () => import('@/routes/yahoo/auctions/search.tsx')
+      },
       "/author/:author": {
         "path": "/author/:author",
         "categories": [
@@ -172897,31 +172943,6 @@ export default {
         "location": "album.ts",
         "module": () => import('@/routes/google/album.ts')
       },
-      "/doodles/:language?": {
-        "path": "/doodles/:language?",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "example": "/google/doodles/zh-CN",
-        "parameters": {
-          "language": "Language, default to `zh-CN`, for other language values, you can get it from [Google Doodles official website](https://www.google.com/doodles)"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Update",
-        "maintainers": [
-          "xyqfer"
-        ],
-        "location": "doodles.ts",
-        "module": () => import('@/routes/google/doodles.ts')
-      },
       "/fonts/:sort?": {
         "path": "/fonts/:sort?",
         "categories": [
@@ -173086,6 +173107,31 @@ export default {
         ],
         "location": "developers.ts",
         "module": () => import('@/routes/google/developers.ts')
+      },
+      "/doodles/:language?": {
+        "path": "/doodles/:language?",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "example": "/google/doodles/zh-CN",
+        "parameters": {
+          "language": "No longer used, [Google Doodles](https://doodles.google/) is only served in English now. Kept so existing feed URLs keep working"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Update",
+        "maintainers": [
+          "xyqfer"
+        ],
+        "location": "doodles.ts",
+        "module": () => import('@/routes/google/doodles.ts')
       },
       "/chrome/extension/:id": {
         "path": "/chrome/extension/:id",

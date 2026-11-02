@@ -84,9 +84,6 @@
   "/freebuf/articles/:type": [
     "trganda"
   ],
-  "/fuliba/latest": [
-    "shinemoon"
-  ],
   "/7gogo/user/:username": [
     "hoilc"
   ],
@@ -4402,6 +4399,9 @@
   "/fudan/cce": [
     "mrbruce516"
   ],
+  "/fuliba/latest": [
+    "shinemoon"
+  ],
   "/funresearch/grants": [
     "DIYgod"
   ],
@@ -4558,18 +4558,9 @@
   "/github/notifications": [
     "zhzy0077"
   ],
-  "/github/org_event/:org/:types?": [
-    "mslxl"
-  ],
-  "/github/feed/:user/:types?": [
-    "RtYkk"
-  ],
   "/github/pull/:user/:repo/:state?/:labels?": [
     "hashman",
     "TonyRL"
-  ],
-  "/github/repo_event/:owner/:repo/:types?": [
-    "mslxl"
   ],
   "/github/repos/:user/:type?/:sort?": [
     "DIYgod"
@@ -4582,6 +4573,15 @@
   ],
   "/github/starred_repos/:user": [
     "LanceZhu"
+  ],
+  "/github/org_event/:org/:types?": [
+    "mslxl"
+  ],
+  "/github/feed/:user/:types?": [
+    "RtYkk"
+  ],
+  "/github/repo_event/:owner/:repo/:types?": [
+    "mslxl"
   ],
   "/github/user_event/:username/:types?": [
     "mslxl"
@@ -7302,6 +7302,9 @@
   "/resonac/products": [
     "valuex"
   ],
+  "/reuters/investigates": [
+    "LyleLee"
+  ],
   "/reuters/my-news": [
     "dzx-dzx"
   ],
@@ -7312,9 +7315,6 @@
     "black-desk",
     "nczitzk",
     "pseudoyu"
-  ],
-  "/reuters/investigates": [
-    "LyleLee"
   ],
   "/rfa/:language?/:channel?/:subChannel?": [
     "zphw"
@@ -9780,7 +9780,7 @@
   "/athome/rent-store/:pref/:city": [
     "pseudoyu"
   ],
-  "/athome/chintai/:pref/:city": [
+  "/athome/chintai/:pref/:city/:page?": [
     "pseudoyu"
   ],
   "/athome/kodate/chuko/:pref/:city": [
@@ -11130,13 +11130,13 @@
     "Fatpandac",
     "nczitzk"
   ],
-  "/homes/chintai/:pref/:city": [
+  "/homes/chintai/:pref/:city/:page?": [
     "pseudoyu"
   ],
-  "/homes/kodate/chuko/:pref/:city": [
+  "/homes/kodate/chuko/:pref/:city/:page?": [
     "pseudoyu"
   ],
-  "/homes/mansion/chuko/:pref/:city": [
+  "/homes/mansion/chuko/:pref/:city/:page?": [
     "pseudoyu"
   ],
   "/hpoi/bannerItem": [
@@ -12145,7 +12145,7 @@
   "/subhd/zu/:category?": [
     "nczitzk"
   ],
-  "/suumo/chintai/:pref/:city": [
+  "/suumo/chintai/:pref/:city/:page?": [
     "pseudoyu"
   ],
   "/suumo/chukoikkodate/:pref/:city": [
@@ -12428,6 +12428,9 @@
   ],
   "/xyzrank/new-podcasts": [
     "nczitzk"
+  ],
+  "/yahoo/auctions/search/:query": [
+    "pseudoyu"
   ],
   "/yahoo/author/:author": [
     "loganrockmore"
@@ -12777,9 +12780,6 @@
   "/google/album/:id": [
     "hoilc"
   ],
-  "/google/doodles/:language?": [
-    "xyqfer"
-  ],
   "/google/fonts/:sort?": [
     "Fatpandac"
   ],
@@ -12795,6 +12795,9 @@
   ],
   "/google/developers/:locale?": [
     "Loongphy"
+  ],
+  "/google/doodles/:language?": [
+    "xyqfer"
   ],
   "/google/chrome/extension/:id": [
     "DIYgod"
