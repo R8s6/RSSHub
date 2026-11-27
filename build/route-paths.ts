@@ -203,6 +203,7 @@ export type RoutePath =
   | `/alwayscontrol/news`
   | `/amazfitwatchfaces/:device/:sort/:searchParams?`
   | `/amazon/awsblogs/:locale?`
+  | `/amazon/blogs/:category?`
   | `/amazon/kindle/software-updates`
   | `/amd/newsroom/:category?/:language?`
   | `/amd/press-releases/:language?`
@@ -234,6 +235,7 @@ export type RoutePath =
   | `/apple/apps/update/:country/:id/:platform?`
   | `/apple/design`
   | `/apple/exchange_repair/:country?`
+  | `/apple/ml-research/:category?`
   | `/apple/newsroom`
   | `/apple/podcast/:id/:region?`
   | `/apple/security-releases/:language?`
@@ -650,6 +652,7 @@ export type RoutePath =
   | `/chongdiantou/`
   | `/chouti/:subject?`
   | `/chouti/top/:hour?`
+  | `/chrome/blog/:lang?`
   | `/chromium/project-zero-issues`
   | `/chsi/hotnews`
   | `/chsi/kydt`
@@ -672,6 +675,7 @@ export type RoutePath =
   | `/cjlu/yjsy/:cate`
   | `/claude/blog`
   | `/claude/code/changelog`
+  | `/claude/dev/blog`
   | `/clickme/:site/:grouping/:name`
   | `/cline/blog`
   | `/cloudflare/blog`
@@ -1112,6 +1116,7 @@ export type RoutePath =
   | `/elecfans/soft/:atype`
   | `/eleduck/jobs`
   | `/eleduck/posts/:id?`
+  | `/elevenlabs/blog`
   | `/elpais/news`
   | `/elsevier/:journal`
   | `/elsevier/:journal/:issue`
@@ -1148,6 +1153,7 @@ export type RoutePath =
   | `/facebook/page/:id`
   | `/facebook/photos/:id`
   | `/facebook/reels/:id`
+  | `/facebook/search/:keyword`
   | `/famitsu/category/:category?`
   | `/fanbox/:creator`
   | `/fanfou/favorites/:uid`
@@ -1214,7 +1220,6 @@ export type RoutePath =
   | `/foresightnews/article`
   | `/foresightnews/column/:id`
   | `/foresightnews/news`
-  | `/foreverblog/feeds`
   | `/forklog/news`
   | `/fortnite/news/:options?`
   | `/fortunechina/:category?`
@@ -1248,7 +1253,6 @@ export type RoutePath =
   | `/furaffinity/user/:username`
   | `/furaffinity/watchers/:username`
   | `/furaffinity/watching/:username`
-  | `/futunn/`
   | `/futunn/live/:lang?`
   | `/futunn/main`
   | `/futunn/topic/:id`
@@ -1525,9 +1529,20 @@ export type RoutePath =
   | `/gov/sh/yjj/:path{.+}?`
   | `/gov/shaanxi/kjt/:id?`
   | `/gov/shanxi/rst/:category`
+  | `/gov/shenzhen/baoan/bajshej/:caty?`
+  | `/gov/shenzhen/dpxq/dpzfjsj/:caty?`
   | `/gov/shenzhen/hrss/szksy/:caty/:page?`
+  | `/gov/shenzhen/lg/lgzjj/:caty?`
+  | `/gov/shenzhen/szft/ftqjsj/:caty?`
+  | `/gov/shenzhen/szgm/gmzfhjsjcsgx/:caty?`
+  | `/gov/shenzhen/szlh/lhqzfhjsj/:caty?`
   | `/gov/shenzhen/szlh/zwfw/zffw/:caty`
+  | `/gov/shenzhen/szlhq/lhzfhjsj/:caty?`
+  | `/gov/shenzhen/szns/nsqzjj/:caty?`
+  | `/gov/shenzhen/szpsq/pszfbzzx/:caty?`
   | `/gov/shenzhen/xxgk/zfxxgj/:caty`
+  | `/gov/shenzhen/yantian/ytjsj/:caty?`
+  | `/gov/shenzhen/zjj/gkmlpt/:caty?`
   | `/gov/shenzhen/zjj/xxgk/:caty`
   | `/gov/shenzhen/zzb/:caty/:page?`
   | `/gov/sichuan/deyang/govpublicinfo/:countyName/:infoType?`
@@ -2040,6 +2055,7 @@ export type RoutePath =
   | `/keyakizaka46/blog`
   | `/keyakizaka46/news`
   | `/keylol/:path`
+  | `/kimi/blog`
   | `/kimlaw/thesis`
   | `/kiro/blog`
   | `/kiro/changelog`
@@ -2231,6 +2247,7 @@ export type RoutePath =
   | `/malaysiakini/:lang/:category?`
   | `/maldita/updates/:category?`
   | `/mamibuy/:caty?`
+  | `/manager-dev/newsletter/:sort?`
   | `/mangadex/manga/:id/:lang?`
   | `/mangadex/mdlist/:id/:lang?`
   | `/mangadex/user/feed/follow/:lang?`
@@ -2354,6 +2371,7 @@ export type RoutePath =
   | `/mixi2/home`
   | `/mixi2/user/:name/:media?`
   | `/miyuki/news`
+  | `/modal/blog`
   | `/modb/topic/:id`
   | `/modelscope/community`
   | `/modelscope/datasets`
@@ -2644,6 +2662,7 @@ export type RoutePath =
   | `/oo-software/changelog/:id`
   | `/openai/chatgpt/release-notes`
   | `/openai/cookbook`
+  | `/openai/developers/blog/:lang?`
   | `/openai/news`
   | `/openai/research`
   | `/openalex/:journals/:type?/:ids?`
@@ -2936,6 +2955,7 @@ export type RoutePath =
   | `/researchgate/publications/:id`
   | `/resetera/thread/:id`
   | `/resonac/products`
+  | `/restofworld/latest`
   | `/reuters/:category/:topic?`
   | `/reuters/investigates`
   | `/reuters/my-news`
@@ -3009,6 +3029,9 @@ export type RoutePath =
   | `/scnu/cs/match`
   | `/scnu/jw`
   | `/scnu/library`
+  | `/scnu/physics-school-announcements`
+  | `/scnu/physics-school-news`
+  | `/scnu/physics-school-research-news`
   | `/scnu/ss`
   | `/scnu/yjs`
   | `/scoop/apps/:query?`
@@ -3095,6 +3118,8 @@ export type RoutePath =
   | `/shanghaitech/sist/activity`
   | `/shanximuseum/exhibition/temporary/:type?`
   | `/shcstheatre/programs`
+  | `/sherwood/news`
+  | `/sherwood/snacks`
   | `/shiep/:type/:id?`
   | `/shisu/en/:section`
   | `/shisu/news/:section`
@@ -3129,6 +3154,7 @@ export type RoutePath =
   | `/sicau/jk/:gid/:typeId/:sortType/:token`
   | `/sicau/yan/:category?`
   | `/sicau/zsjy/:category?`
+  | `/sierra/blog`
   | `/sigsac/ccs/:year?`
   | `/simonsfoundation/articles`
   | `/simonsfoundation/recommend`
@@ -3276,6 +3302,7 @@ export type RoutePath =
   | `/subhd/sub/:category?`
   | `/subhd/zu/:category?`
   | `/substack/subscribe/:user`
+  | `/supabase/blog`
   | `/supchina/`
   | `/supchina/podcasts`
   | `/supercell/:game/blog/:locale?`
@@ -3459,12 +3486,14 @@ export type RoutePath =
   | `/tmtpost/new`
   | `/tmtpost/nictation`
   | `/toei/ridership`
+  | `/together/blog`
   | `/tokeninsight/blog/:lang?`
   | `/tokeninsight/bulletin/:lang?`
   | `/tokeninsight/report/:lang?`
   | `/tokyometro/ridership/:year?`
   | `/tokyu/ridership/:year?`
   | `/tongji/bks`
+  | `/tongji/cs`
   | `/tongji/gs`
   | `/tongji/sem/:type?`
   | `/tongji/sse/:type?`
@@ -3586,6 +3615,7 @@ export type RoutePath =
   | `/uraaka-joshi/`
   | `/uraaka-joshi/:id`
   | `/urbandictionary/random`
+  | `/uscc/research`
   | `/usenix/loginonline`
   | `/usenix/usenix-security-sympoium`
   | `/usepanda/feeds/:id`
@@ -3616,6 +3646,7 @@ export type RoutePath =
   | `/v2ex/topics/:type`
   | `/v2ex/xna`
   | `/v2rayshare/`
+  | `/valueresearchonline/knowledge-center/:section`
   | `/vb-audio/voicemeeter/changelog`
   | `/vcb-s/`
   | `/vcb-s/category/:cate`
@@ -3635,6 +3666,7 @@ export type RoutePath =
   | `/viva-la-vita/featured`
   | `/viva-la-vita/hot`
   | `/viva-la-vita/latest`
+  | `/vllm/blog`
   | `/voanews/:language/:channel?`
   | `/vocus/publication/:id`
   | `/vocus/user/:id`
